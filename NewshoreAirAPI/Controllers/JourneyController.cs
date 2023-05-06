@@ -23,32 +23,42 @@ namespace NewshoreAirAPI.Controllers
         [HttpGet("calculate")]
         public async Task<IActionResult> CalculateJourney(string origin, string destination)
         {
-            if (origin.Length > 3)
+            try
             {
-                return BadRequest("The origin must have only three characters,(COL, MEX).");
-            }
-
-            if (destination.Length > 3)
-            {
-                return BadRequest("The destination must have only three characters,(COL, MEX).");
-            }
-
-            Journey journey = await _journeyHandler.GetJourney(
-                origin.ToUpper(),
-                destination.ToUpper());
-
-            if (!journey.Flights.Any())
-            {
-                return new ContentResult
+                if (origin.Length > 3)
                 {
-                    StatusCode = 204,
-                    Content = "It is not possible to calculate a route"
-                };  
+                    return BadRequest("The origin must have only three characters,(COL, MEX).");
+                }
+
+                if (destination.Length > 3)
+                {
+                    return BadRequest("The destination must have only three characters,(COL, MEX).");
+                }
+
+                Journey journey = await _journeyHandler.GetJourney(
+                    origin.ToUpper(),
+                    destination.ToUpper());
+
+                if (!journey.Flights.Any())
+                {
+                    return new ContentResult
+                    {
+                        StatusCode = 204,
+                        Content = "It is not possible to calculate a route."
+
+
+                    };
+                }
+                JourneyMapper journeyMapper = new JourneyMapper();
+                JourneyResponse journeyResponse = journeyMapper.MapperT1T2(journey);
+
+                return Ok(journeyResponse);
             }
-            JourneyMapper journeyMapper = new JourneyMapper();
-            JourneyResponse journeyResponse = journeyMapper.MapperT1T2(journey);
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
             
-            return Ok(journeyResponse);
         }
 
     }

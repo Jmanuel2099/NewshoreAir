@@ -16,6 +16,7 @@ namespace NewshoreAirInfrastructure.NewshoreAir.Flights.Client
         {
             using (HttpClient client = new HttpClient())
             {
+                Console.WriteLine("Hola soy el servicio de newshore");
                 HttpResponseMessage response = await client.GetAsync("https://recruiting-api.newshore.es/api/flights/1");
                 if (response.IsSuccessStatusCode)
                 {

@@ -1,5 +1,6 @@
 ﻿using NewshoreAirApplication.Interfaces.Persistance;
 using NewshoreAirApplication.Interfaces.Services;
+using NewshoreAirDomain.Errors;
 using NewshoreAirDomain.Journey;
 using NewshoreAirDomain.Journey.Entities;
 using System;
@@ -25,33 +26,41 @@ namespace NewshoreAirApplication.Journeys
         {
 			try
 			{
-                if (_journeyRespository.ExistsJourney(origin, destination))
+                var journeys = _journeyRespository.GetJourneys(origin, destination);
+                if (journeys.Any())
                 {
-                    return _journeyRespository.GetJourneys().First();
+                    return journeys.First();
                 }
 
                 IEnumerable<Flight> flights = await _newsFlights.GetNewshoreFlights();
                 if (!flights.Any())
                 {
-                    // TODO manejo de excepciones
+                    throw new CustomError("There are no logs on the newshore air server.", null);
                 }
 
-                IEnumerable<Flight> journeyRoute = calculateJourneyRoute(flights, origin, destination); 
-                return new Journey
+                IEnumerable<Flight> journeyRoute = calculateJourneyRoute(
+                    flights, 
+                    origin, 
+                    destination);
+
+                Journey newJourney = new Journey() 
                 {
                     Origin = origin,
                     Destination = destination,
                     Price = calculateJourneyPrice(journeyRoute),
                     Flights = journeyRoute
                 };
+                _journeyRespository.CreateJourney(newJourney);
+
+                return newJourney;
             }
-			catch (Exception)
+			catch (Exception ex)
 			{
-                // TODO: manejo de errores.
-				throw;
+				throw new CustomError(
+                    "Something happened while the journey was being obtained.",
+                    ex);
 			}
         }
-
 
         private IEnumerable<Flight> calculateJourneyRoute(
             IEnumerable<Flight> flights, 
@@ -60,16 +69,13 @@ namespace NewshoreAirApplication.Journeys
         {
             List<Flight> result = new List<Flight>();
             string currentOrigin = origin;
-
             while (currentOrigin != destination)
             {
                 var nextFlight = flights.FirstOrDefault(f => f.Origin == currentOrigin);
                 if (nextFlight == null)
                 {
-                    // Si no hay más vuelos disponibles, salimos del loop
                     break;
                 }
-
                 result.Add(nextFlight);
                 currentOrigin = nextFlight.Destination;
             }
@@ -84,6 +90,7 @@ namespace NewshoreAirApplication.Journeys
             {
                 price += flight.Price;
             }
+
             return price;
         }
 

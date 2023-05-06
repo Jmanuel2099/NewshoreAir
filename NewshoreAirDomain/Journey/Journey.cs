@@ -9,6 +9,7 @@ namespace NewshoreAirDomain.Journey
 {
     public class Journey
     {
+        public int JourneyId { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
         public float Price { get; set; }

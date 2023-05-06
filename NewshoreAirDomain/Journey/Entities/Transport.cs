@@ -8,6 +8,7 @@ namespace NewshoreAirDomain.Journey.Entities
 {
     public class Transport
     {
+        public int TransportId { get; set; }
         public string FlightCarrier { get; set; }
         public string FlightNumber { get; set; }
     }

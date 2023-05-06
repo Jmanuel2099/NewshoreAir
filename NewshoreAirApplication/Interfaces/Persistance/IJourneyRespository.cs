@@ -9,8 +9,8 @@ namespace NewshoreAirApplication.Interfaces.Persistance
 {
     public interface IJourneyRespository
     {
-        IEnumerable<Journey> GetJourneys();
-
-        bool ExistsJourney(string origin, string destination);
+        IEnumerable<Journey> GetJourneys(string origin, string destination);
+        
+        void CreateJourney(Journey journey);
     }
 }
