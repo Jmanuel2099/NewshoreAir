@@ -5,7 +5,6 @@ using NewshoreAirAPI.Models.Response.JourneyResponse;
 using NewshoreAirApplication.Journeys;
 using NewshoreAirDomain.Journey;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace NewshoreAirAPI.Controllers
 {
@@ -22,7 +21,7 @@ namespace NewshoreAirAPI.Controllers
         }
 
         [HttpGet("calculate")]
-        public IActionResult CalculateJourney(string origin, string destination)
+        public async Task<IActionResult> CalculateJourney(string origin, string destination)
         {
             if (origin.Length > 3)
             {
@@ -34,7 +33,7 @@ namespace NewshoreAirAPI.Controllers
                 return BadRequest("The destination must have only three characters,(COL, MEX).");
             }
 
-            Journey journey = _journeyHandler.GetJourney(
+            Journey journey = await _journeyHandler.GetJourney(
                 origin.ToUpper(),
                 destination.ToUpper());
 
@@ -44,8 +43,7 @@ namespace NewshoreAirAPI.Controllers
                 {
                     StatusCode = 204,
                     Content = "It is not possible to calculate a route"
-                };
-                    
+                };  
             }
             JourneyMapper journeyMapper = new JourneyMapper();
             JourneyResponse journeyResponse = journeyMapper.MapperT1T2(journey);

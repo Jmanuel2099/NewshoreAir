@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewshoreAirAPI", "NewshoreAirAPI\NewshoreAirAPI.csproj", "{46C2BC13-BF17-4FA8-8F06-63D24DCE8B31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewshoreAirAPI", "NewshoreAirAPI\NewshoreAirAPI.csproj", "{46C2BC13-BF17-4FA8-8F06-63D24DCE8B31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewshoreAirApplication", "NewshoreAirApplication\NewshoreAirApplication.csproj", "{88941B30-C1E5-455D-86D6-999DAFACBF2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewshoreAirApplication", "NewshoreAirApplication\NewshoreAirApplication.csproj", "{88941B30-C1E5-455D-86D6-999DAFACBF2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewshoreAirDomain", "NewshoreAirDomain\NewshoreAirDomain.csproj", "{C318BDD5-65AE-499A-820A-991D714E6BEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewshoreAirDomain", "NewshoreAirDomain\NewshoreAirDomain.csproj", "{C318BDD5-65AE-499A-820A-991D714E6BEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewshoreAirInfrastructure", "NewshoreAirInfrastructure\NewshoreAirInfrastructure.csproj", "{5F2D742F-168D-45DB-8F68-E28034A05FF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewshoreAirInfrastructure", "NewshoreAirInfrastructure\NewshoreAirInfrastructure.csproj", "{5F2D742F-168D-45DB-8F68-E28034A05FF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewshoreAirContracts", "NewshoreAirContracts\NewshoreAirContracts.csproj", "{D3D5B98E-54A6-404F-879C-949111015DDF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{C8683473-E5E7-4FE3-BA56-E5D0EE296505}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{1F1834EB-8649-4526-B3E5-76D189134753}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{5714EA41-AC4E-4CA7-8A0C-D7ED00D9DB72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{63D851A1-1D64-4B08-BAA1-6B28560FA303}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,13 +41,15 @@ Global
 		{5F2D742F-168D-45DB-8F68-E28034A05FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F2D742F-168D-45DB-8F68-E28034A05FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F2D742F-168D-45DB-8F68-E28034A05FF2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3D5B98E-54A6-404F-879C-949111015DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3D5B98E-54A6-404F-879C-949111015DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3D5B98E-54A6-404F-879C-949111015DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3D5B98E-54A6-404F-879C-949111015DDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46C2BC13-BF17-4FA8-8F06-63D24DCE8B31} = {1F1834EB-8649-4526-B3E5-76D189134753}
+		{88941B30-C1E5-455D-86D6-999DAFACBF2A} = {5714EA41-AC4E-4CA7-8A0C-D7ED00D9DB72}
+		{C318BDD5-65AE-499A-820A-991D714E6BEC} = {C8683473-E5E7-4FE3-BA56-E5D0EE296505}
+		{5F2D742F-168D-45DB-8F68-E28034A05FF2} = {63D851A1-1D64-4B08-BAA1-6B28560FA303}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E737054C-5772-4C06-A432-C8C4020087F5}

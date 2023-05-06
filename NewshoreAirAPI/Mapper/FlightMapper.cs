@@ -14,7 +14,7 @@ namespace NewshoreAirAPI.Mapper
                 Destination = input.Destination,
                 Origin = input.Origin,
                 Price = input.Price,
-                Transports = transportMapper.MapperT1T2(input.Transports)
+                Transports = transportMapper.MapperT1T2(input.Transport)
             };
         }
 
