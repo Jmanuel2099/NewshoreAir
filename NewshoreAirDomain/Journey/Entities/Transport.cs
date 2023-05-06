@@ -10,13 +10,5 @@ namespace NewshoreAirDomain.Journey.Entities
     {
         public string FlightCarrier { get; set; }
         public string FlightNumber { get; set; }
-
-        public Transport (string FlightCarrier, string FlightNumber)
-        {
-            this.FlightCarrier = FlightCarrier;
-            this.FlightNumber = FlightNumber;
-        }
-
-        
     }
 }
