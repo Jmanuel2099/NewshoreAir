@@ -12,12 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NewshoreAirApplication\NewshoreAirApplication.csproj" />
-    <ProjectReference Include="..\NewshoreAirContracts\NewshoreAirContracts.csproj" />
     <ProjectReference Include="..\NewshoreAirInfrastructure\NewshoreAirInfrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
