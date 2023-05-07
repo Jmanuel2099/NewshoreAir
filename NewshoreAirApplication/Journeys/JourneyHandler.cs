@@ -26,10 +26,10 @@ namespace NewshoreAirApplication.Journeys
         {
 			try
 			{
-                var journeys = _journeyRespository.GetJourneys(origin, destination);
-                if (journeys.Any())
+                var journey = _journeyRespository.GetJourneys(origin, destination);
+                if (journey != null)
                 {
-                    return journeys.First();
+                    return journey;
                 }
 
                 IEnumerable<Flight> flights = await _newsFlights.GetNewshoreFlights();
