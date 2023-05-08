@@ -21,7 +21,13 @@ namespace NewshoreAirInfrastructure.NewshoreAir.Mapper
         /// <param name="input">Model of the current layer.</param>
         /// <returns>Model of the communicating layer.</returns>
         public abstract T2 MapperT1T2(T1 input);
-        
+
+        /// <summary>
+        /// MapperT1T2 receives a list of models of the current layer to convert them all to models of the
+        /// layer it is communicating with 
+        /// </summary>
+        /// <param name="input">List of models of the current layer</param>
+        /// <returns>List of models of the layer it is communicating with </returns>
         public abstract IEnumerable<T2> MapperT1T2(IEnumerable<T1> input);
     }
 }
