@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace NewshoreAirDomain.Journey
 {
+    /// <summary>
+    /// Journey represents the travel attributes of the NewshoreAir model.
+    /// </summary>
     public class Journey
     {
         public int JourneyId { get; set; }

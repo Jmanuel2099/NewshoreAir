@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NewshoreAirDomain.Journey.Entities
 {
+    /// <summary>
+    /// Transport represents the transport attributes of the NewshoreAir model. 
+    /// </summary>
     public class Transport
     {
         public int TransportId { get; set; }
