@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace NewshoreAirApplication.Journeys
 {
+    /// <summary>
+    /// JourneyHandler is the class where the business logic for journeys is done.
+    /// </summary>
     public class JourneyHandler : IJourneyHandler
     {
 		private IJourneyRespository _journeyRespository;
@@ -62,6 +65,14 @@ namespace NewshoreAirApplication.Journeys
 			}
         }
 
+        /// <summary>
+        /// calculateJourneyRoute receives the available trips to calculate a 
+        /// flight route given the origin and destination. 
+        /// </summary>
+        /// <param name="flights">Available flights</param>
+        /// <param name="origin">Journey origin</param>
+        /// <param name="destination">Journey destination</param>
+        /// <returns>The calculated route</returns>
         private IEnumerable<Flight> calculateJourneyRoute(
             IEnumerable<Flight> flights, 
             string origin, 
@@ -83,6 +94,11 @@ namespace NewshoreAirApplication.Journeys
             return result;
         }
 
+        /// <summary>
+        /// calculateJourneyPrice gets the route of the trip to calculate its price
+        /// </summary>
+        /// <param name="flights">Available flights</param>
+        /// <returns>the price of the journey</returns>
         private float calculateJourneyPrice(IEnumerable<Flight> flights) 
         {
             float price = 0f;
