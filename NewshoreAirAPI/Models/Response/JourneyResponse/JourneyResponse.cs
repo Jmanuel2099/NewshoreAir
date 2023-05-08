@@ -3,6 +3,9 @@ using NewshoreAirDomain.Journey.Entities;
 
 namespace NewshoreAirAPI.Models.Response.JourneyResponse
 {
+    /// <summary>
+    /// JourneyResponse respects the journey model to give a response to a request.
+    /// </summary>
     public class JourneyResponse
     {
         public string Origin { get; set; }
